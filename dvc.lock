@@ -1,0 +1,15 @@
+preprocess:
+  cmd: python preprocessing.py
+  deps:
+  - path: data/
+    md5: 30ec7474fa549ab4c8320792b4901b85.dir
+    size: 493
+    nfiles: 1
+  - path: preprocessing.py
+    md5: dbcc3330c2c9f635486cb48cafb66a3d
+    size: 914
+  outs:
+  - path: features/
+    md5: 26eededa5fe7df59d7fe2ce6b5181c18.dir
+    size: 2061
+    nfiles: 1
