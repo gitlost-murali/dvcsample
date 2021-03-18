@@ -1,0 +1,8 @@
+stages:
+    preprocess:
+      cmd: python preprocessing.py
+      deps:
+        - data/
+        - preprocessing.py
+      outs:
+        - features/
