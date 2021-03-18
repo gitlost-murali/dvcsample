@@ -13,3 +13,35 @@ preprocess:
     md5: 26eededa5fe7df59d7fe2ce6b5181c18.dir
     size: 2061
     nfiles: 1
+training:
+  cmd: python training.py
+  deps:
+  - path: features/
+    md5: 26eededa5fe7df59d7fe2ce6b5181c18.dir
+    size: 2061
+    nfiles: 1
+  - path: training.py
+    md5: 1f9a1707196d9982bb61ee8369b98360
+    size: 1465
+  params:
+    params.yaml:
+      model.epochs: 5
+  outs:
+  - path: model/
+    md5: 2eaa520ae12f75b29bee7f1c12ead249.dir
+    size: 13665034
+    nfiles: 16
+evaluate:
+  cmd: python evaluate.py
+  deps:
+  - path: evaluate.py
+    md5: a0bde93d05a7181e788200a823af7b76
+    size: 1082
+  - path: model/
+    md5: 2eaa520ae12f75b29bee7f1c12ead249.dir
+    size: 13665034
+    nfiles: 16
+  outs:
+  - path: scores.json
+    md5: f8998d43b8593ee3107fb0222df52006
+    size: 56
