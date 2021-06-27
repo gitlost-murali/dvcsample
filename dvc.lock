@@ -1,47 +1,49 @@
-preprocess:
-  cmd: python preprocessing.py
-  deps:
-  - path: data/
-    md5: d202db243a5e470c31a54ab664bc3074.dir
-    size: 571
-    nfiles: 1
-  - path: preprocessing.py
-    md5: dbcc3330c2c9f635486cb48cafb66a3d
-    size: 914
-  outs:
-  - path: features/
-    md5: 23f734234bea2253a908a1b270b86ae0.dir
-    size: 2371
-    nfiles: 1
-training:
-  cmd: python training.py
-  deps:
-  - path: features/
-    md5: 23f734234bea2253a908a1b270b86ae0.dir
-    size: 2371
-    nfiles: 1
-  - path: training.py
-    md5: 1f9a1707196d9982bb61ee8369b98360
-    size: 1465
-  params:
-    params.yaml:
-      model.epochs: 5
-  outs:
-  - path: model/
-    md5: d6b2b8eca5c3d1479704346a021ec27a.dir
-    size: 13665120
-    nfiles: 16
-evaluate:
-  cmd: python evaluate.py
-  deps:
-  - path: evaluate.py
-    md5: a0bde93d05a7181e788200a823af7b76
-    size: 1082
-  - path: model/
-    md5: d6b2b8eca5c3d1479704346a021ec27a.dir
-    size: 13665120
-    nfiles: 16
-  outs:
-  - path: scores.json
-    md5: 25cd092b22d9633b02c24aa56db86701
-    size: 45
+schema: '2.0'
+stages:
+  preprocess:
+    cmd: python preprocessing.py
+    deps:
+    - path: data/
+      md5: edacbe021762d1a01106898639f9f782.dir
+      size: 492
+      nfiles: 1
+    - path: preprocessing.py
+      md5: dbcc3330c2c9f635486cb48cafb66a3d
+      size: 914
+    outs:
+    - path: features/
+      md5: 26eededa5fe7df59d7fe2ce6b5181c18.dir
+      size: 2061
+      nfiles: 1
+  training:
+    cmd: python training.py
+    deps:
+    - path: features/
+      md5: 26eededa5fe7df59d7fe2ce6b5181c18.dir
+      size: 2061
+      nfiles: 1
+    - path: training.py
+      md5: 1f9a1707196d9982bb61ee8369b98360
+      size: 1465
+    params:
+      params.yaml:
+        model.epochs: 5
+    outs:
+    - path: model/
+      md5: 2eaa520ae12f75b29bee7f1c12ead249.dir
+      size: 13665034
+      nfiles: 16
+  evaluate:
+    cmd: python evaluate.py
+    deps:
+    - path: evaluate.py
+      md5: a0bde93d05a7181e788200a823af7b76
+      size: 1082
+    - path: model/
+      md5: 2eaa520ae12f75b29bee7f1c12ead249.dir
+      size: 13665034
+      nfiles: 16
+    outs:
+    - path: scores.json
+      md5: f8998d43b8593ee3107fb0222df52006
+      size: 56
